@@ -1,0 +1,15 @@
+<div class="card">
+    <h2>{{card_title}}</h2>
+    <textarea id="task_desc" placeholder="Add task here..." [(ngModel)]="task"></textarea>
+    
+    <div class="btns">
+        <button 
+            style="background-color: #32d9b2; color:white" 
+            (click)="addTask()" 
+            [ngClass]="{'disable': task.length<3}">
+            {{action_name}}
+        </button>
+        
+        <button style="background-color: rgba(53, 54, 58, 0.905); color:white" (click)="dialogClose()">Close</button>
+    </div>
+</div>

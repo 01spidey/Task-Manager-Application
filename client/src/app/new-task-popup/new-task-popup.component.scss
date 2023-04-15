@@ -1,0 +1,47 @@
+@import '../../main.styles.scss';
+
+
+.card{
+    width: 400px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+#task_desc{
+    height: 100px;
+    width: 100%;
+    padding: 20px;
+    font-size: 17px;
+    background-color: #eee;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+h2{
+    margin: 0;
+}
+
+.btns{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+}
+
+button{
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.disable{
+    pointer-events: none;
+    opacity: 0.6;
+}

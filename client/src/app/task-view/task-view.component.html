@@ -1,0 +1,93 @@
+<header>
+
+    <div class="name">
+        <p>{{username}}</p>
+    </div>
+
+    <div class="logo">
+        <span class="material-symbols-outlined">
+            event_available
+        </span>
+        <h1>Taskify</h1>
+    </div>
+
+    <button (click)="logout()">logout</button>
+    
+</header>
+
+<div class="centered-content">
+    <div class="task-manager-container">
+
+        <div class="sidebar">
+
+            <h1 class="title has-text-primary">
+                Lists
+            </h1>
+
+            <div class="no-tasks" *ngIf="!list_flag">
+                <h2 style="color:white">No Lists Found!!</h2>
+            </div>
+
+            <div class="list-menu" *ngIf="list_flag">
+                <div class="list-menu-item" *ngFor="let list of lists" [ngClass]="{'is-active': activeList!.title === list.title}">
+                    <a (click)="getTasks(list)">
+                        <p>{{list.title}}</p>
+                    </a>
+                    <div class="btns">
+                        <span class="material-symbols-outlined btn" (click)="editList(list)">
+                            edit
+                        </span>
+                        <span class="material-symbols-outlined btn" (click)="deleteList(list)">
+                            delete
+                        </span>
+                    </div>
+                    
+                </div>
+                <hr>
+            </div>
+
+            <button class="button is-primary has-text-white" (click)="newList()">+&nbsp;New List</button>
+
+        </div>
+
+        
+
+        <div class="task-list-container has-background-light">
+            <h1 class="title has-text-primary">
+                Tasks
+            </h1>
+
+            <div class="list-info" *ngIf="list_flag">
+                <h2>{{list_title}}</h2>
+                <p>{{list_desc}}</p>
+            </div>
+
+            <div class="no-tasks" *ngIf="!task_flag">
+                <h2>No Tasks Found!!</h2>
+            </div>
+            
+
+            <div class="task-list" *ngIf="task_flag">
+                <div class="task" [ngClass]="{'complete': task.completed == true}" *ngFor="let task of tasks">
+                    <p (click) = "completeTask(task)" >{{task.task}}</p>
+                    <div class="btns">
+                        <span class="material-symbols-outlined ref-btn" *ngIf="task.completed==true" (click)="retrieveTask(task)">
+                            replay
+                        </span>
+                        <span class="material-symbols-outlined edit-btn" *ngIf="task.completed==false" (click)="editTask(task)">
+                            edit
+                        </span>
+                        <span class="material-symbols-outlined del-btn" (click)="deleteTask(task)">
+                            delete
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <button mat-fab color="accent" *ngIf="list_flag" (click)="addTask()">
+                <mat-icon>add</mat-icon>
+            </button>
+            
+        </div>
+
+    </div>
+</div>
